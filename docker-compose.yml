@@ -59,10 +59,11 @@ services:
       options:
         max-size: ${DOCKER_WORDPRESS_SITE_LOG_MAX_SIZE:-2m}
         max-file: ${DOCKER_WORDPRESS_SITE_LOG_MAX_FILE:-10}
-    extra_hosts:
+    #This section is to allow the WP site to loop back to itelself. (Look in the site health section of wordpress)
+    # extra_hosts:
       # Host server IP env needs set up
       # TODO: Work with server_automation scripts to make this part of the package instead of manual env var.
-      ${DOCKER_WORDPRESS_DOMAINS}: 10.124.157.15
+      # www.yourdomain.com: <HOST_SERVER IP>   # The ip of the docker host server (not the container)
 
 
   wpcli:
