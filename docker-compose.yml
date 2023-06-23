@@ -59,6 +59,11 @@ services:
       options:
         max-size: ${DOCKER_WORDPRESS_SITE_LOG_MAX_SIZE:-2m}
         max-file: ${DOCKER_WORDPRESS_SITE_LOG_MAX_FILE:-10}
+    extra_hosts:
+      # HOST_SERVER_IP env comes from my bash.bashrc 
+      # TODO: Work with server_automation scripts to make this part of the package instead of manual env var.
+      ${DOCKER_WORDPRESS_DOMAINS}: ${HOST_SERVER_IP}
+
 
   wpcli:
     image: wordpress:cli
